@@ -1,0 +1,37 @@
+
+[
+    {
+      "ques": "Question one",
+      "type": "subjective"
+    },
+    {
+      "ques": "Question two",
+      "type": "yes_no"
+    },
+    {
+      "ques": "Question three",
+      "type": "mcq",
+      "opt": ["opt1", "opt2", "opt3", "opt4"]
+    },
+    {
+      "ques": "Question four",
+      "type": "range_10"
+    },
+    {
+      "ques": "Question five",
+      "type": "subjective"
+    },
+    {
+      "ques": "Question six",
+      "type": "yes_no"
+    },
+    {
+      "ques": "Question seven",
+      "type": "mcq",
+      "opt": ["opt1", "opt2", "opt3", "opt4"]
+    },
+    {
+      "ques": "Question eight",
+      "type": "range_10"
+    }
+  ]

@@ -1,0 +1,97 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-container form {
+  margin-top: 20px;
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container textarea,
+.form-container select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.form-container input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.error-message {
+  margin-top: 10px;
+  color: red;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-container button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.prev-button {
+  background-color: #ccc;
+  color: #fff;
+}
+
+.next-button,
+.submit-button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.preview-container {
+  margin-top: 20px;
+}
+
+.preview-container p {
+  margin-bottom: 10px;
+}
+
+.preview-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.question-container{
+
+  width: 80%;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}

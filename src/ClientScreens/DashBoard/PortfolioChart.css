@@ -1,0 +1,16 @@
+.portfolio-chart-container {
+    position: relative;
+  }
+  
+  .checkbox-container {
+    position: absolute !important;
+    top: 10px; /* Adjust top position as needed */
+    right: 10px; /* Adjust right position as needed */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .checkbox-container label {
+    position: relative !important;
+    margin-bottom: 5px;
+  }

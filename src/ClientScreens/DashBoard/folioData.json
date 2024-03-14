@@ -1,0 +1,64 @@
+{
+  "folio": {
+    "folio_id": "1234",
+    "plans": [
+      {
+        "plan_id": "54545",
+        "plan_name": "dodo investment",
+        "advisor_id": "y6y75",
+        "purchase_date": "01012020",
+        "amount": 10000,
+        "stocks": [
+          {
+            "symbol": "AAPL", 
+            "qty": 25,
+            "buying_price": 45
+          },
+          {
+            "symbol": "MSFT", 
+            "qty": 50,
+            "buying_price": 30
+          }
+        ]
+      },
+      {
+        "plan_id": "98989",
+        "plan_name": "growth fund",
+        "advisor_id": "abcde",
+        "purchase_date": "02022021",
+        "amount": 15000,
+        "stocks": [
+          {
+            "symbol": "PYPL", 
+            "qty": 30,
+            "buying_price": 60
+          },
+          {
+            "symbol": "AMGN",
+            "qty": 40,
+            "buying_price": 35
+          }
+        ]
+      },
+      {
+        "plan_id": "77777",
+        "plan_name": "retirement plan",
+        "advisor_id": "xyz12",
+        "purchase_date": "15052022",
+        "amount": 20000,
+        "stocks": [
+          {
+            "symbol": "KO", 
+            "qty": 20,
+            "buying_price": 50
+          },
+          {
+            "symbol": "TSLA", 
+            "qty": 35,
+            "buying_price": 40
+          }
+        ]
+      }
+    ]
+  }
+}
