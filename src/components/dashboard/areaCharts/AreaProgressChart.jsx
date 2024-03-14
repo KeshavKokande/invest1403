@@ -28,8 +28,7 @@ const AreaProgressChart = () => {
     
         fetchData();
       }, []);
-
-      console.log("Ye le bhadwe:", progressData);
+      
   return (
 
      <div className="adv-progress-bar" style={{backgroundColor:"#ffffff"}}>

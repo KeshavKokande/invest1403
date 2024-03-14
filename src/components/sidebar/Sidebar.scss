@@ -111,6 +111,11 @@
     }
   }
 
+  .menu-item.active .menu-link {
+    background-color: #475BE8;
+    color: #ffffff; 
+  }
+
   .menu-link{
     width: 100%;
     height: 48px;

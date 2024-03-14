@@ -6,7 +6,9 @@ const AreaCards = () => {
 
   const [totalClients, setTotalClients] = useState();
   const [totalInvestedAmount, setTotalInvestedAmount] = useState();
+  const [totalCurrentProfit, setTotalCurrentProfit] = useState();
 
+  // get-no-of-clients
   useEffect(() => {
     const fetchTotalClients = async () => {
       try {
@@ -32,11 +34,12 @@ const AreaCards = () => {
     fetchTotalClients();
   }, []);
 
+  // get-total-invested-amount
   useEffect(() => {
     const fetchTotalInvestedAmount = async () => {
       try {
 
-        const response = await fetch('http://localhost:8000/api/v1/advisor/get-tatal-invested-amount', {
+        const response = await fetch('http://localhost:8000/api/v1/advisor/get-total-invested-amount', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -49,6 +52,7 @@ const AreaCards = () => {
         }
         const data = await response.json();
         setTotalInvestedAmount(data);
+        console.log("Ye Le BHadwe :  ", data);
     } catch (error) {
         console.error('Error fetching user data:', error.message);
       }
@@ -57,6 +61,37 @@ const AreaCards = () => {
     fetchTotalInvestedAmount();
   }, []);
 
+  // get-total-current-profit
+  useEffect(() => {
+    const fetchTotalCurrentProfit = async () => {
+      try {
+
+        const response = await fetch('http://localhost:8000/api/v1/advisor/get-total-current-profit', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include'
+        })
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch user data');
+        }
+        const data = await response.json();
+        setTotalCurrentProfit(data);
+        console.log("Ye Le BHadwe :  ", data);
+    } catch (error) {
+        console.error('Error fetching user data:', error.message);
+      }
+    };
+
+    fetchTotalCurrentProfit();
+  }, []);
+
+  const formatCurrency = (value) => {
+    const roundedValue = parseFloat(value).toFixed(2);
+    return `₹${roundedValue}`;
+  };
 
   return (
     <section className="content-area-cards">
@@ -74,8 +109,8 @@ const AreaCards = () => {
         percentFillValue={50}
         cardInfo={{
           title: "Total Revenue",
-          value: `₹${totalInvestedAmount?.totalInvestedAmount}`,
-          text: `Total investment ${totalInvestedAmount?.totalInvestedAmount}`,
+          value: formatCurrency(totalInvestedAmount?.totalInvestedAmount),
+          text: `Total investment ${formatCurrency(totalInvestedAmount?.totalInvestedAmount)}`,
         }}
       />
       <AreaCard
@@ -83,8 +118,8 @@ const AreaCards = () => {
         percentFillValue={40}
         cardInfo={{
           title: "Current Profit",
-          value: "$18.2K",
-          text: "Available to payout",
+          value: formatCurrency(totalCurrentProfit?.totalCumulativeProfit),
+          text: `Total Current Profit ${formatCurrency(totalCurrentProfit?.totalCumulativeProfit)}`,
         }}
       />
     </section>

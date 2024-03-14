@@ -15,10 +15,12 @@ import {
 import { Link } from "react-router-dom";
 import "./Sidebar.scss";
 import { SidebarContext } from "../../context/SidebarContext";
+import { useLocation } from "react-router-dom";
 // import Clientlist from '../dashboard/client/clientlist';
 
 
 const Sidebar = () => {
+  const location = useLocation();
   const { theme } = useContext(ThemeContext);
   const { isSidebarOpen, closeSidebar } = useContext(SidebarContext);
   const navbarRef = useRef(null);
@@ -58,15 +60,15 @@ const Sidebar = () => {
       <div className="sidebar-body">
         <div className="sidebar-menu">
           <ul className="menu-list">
-            <li className="menu-item">
-              <Link to="/advisor_dashboard" className="menu-link active">
+            <li className={`menu-item ${location.pathname === "/advisor_dashboard" ? "active" : ""}`}>
+              <Link to="/advisor_dashboard" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineGridView size={18} />
                 </span>
                 <span className="menu-link-text">Dashboard</span>
               </Link>
             </li>
-            <li className="menu-item">
+            <li className={`menu-item ${location.pathname === "/plan" ? "active" : ""}`}>
               <Link to="/plan" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineShoppingBag size={20} />
@@ -74,7 +76,7 @@ const Sidebar = () => {
                 <span className="menu-link-text">Plans</span>
               </Link>
             </li>
-            <li className="menu-item">
+            <li className={`menu-item ${location.pathname === "/Clientlist" ? "active" : ""}`}>
               <Link to="/Clientlist" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlinePeople size={20} />

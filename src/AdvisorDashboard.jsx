@@ -13,11 +13,9 @@ import Plans from "./components/dashboard/plans/plans";
 
 import HomePage from "./components/PreLoginHomepage/HomePage" 
 import Loginpage from './components/SignIn/Loginpage';
-import Client_landing from './components/PreLoginHomepage/Client_landing'
 
 import Registerpage from "./components/SignIn/Registerpage";
 import UserDetails from "./checking/UserDetails";
-// import Plans from "./components/dashboard/plans/plans";
 import AddPlan from "./components/dashboard/plans/AddPlan";
 
 import AdNewPlans from "./components/dashboard/plans/AdNewPlans";
@@ -50,7 +48,6 @@ function App() {
           <Route path ="/" element= {<HomePage />}/>
           <Route path ="/login" element= {<Loginpage />}/>
           <Route path ="/register" element= {<Registerpage/>}/>
-          <Route path="/client_landing" element={<Client_landing/>} />
           <Route element={<BaseLayout />}>
             <Route path="/advisor_dashboard" element={<Dashboard />} />
             <Route path="/clientlist" element={<Clientlist/>} />

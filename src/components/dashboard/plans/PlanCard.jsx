@@ -9,7 +9,7 @@ const PlanCard = ({ plan, deletePlan }) => {
       <tr key={index}>
         <td className="adnewplan-td">{stock.stockName}</td>
         <td className="adnewplan-td">{stock.contri}%</td>
-        <td className={parseFloat(stock.currentDayValue) >= 0 ? "adnewplan-profit-positive" : "adnewplan-profit-negative"}>{stock.currentDayValue}%</td>
+        <td className={`adnewplan-td ${parseFloat(stock.currentDayValue) >= 0 ? "adnewplan-profit-positive" : "adnewplan-profit-negative"}`}>{stock.currentDayValue}%</td>
       </tr>
     ));
   };
@@ -32,11 +32,16 @@ const PlanCard = ({ plan, deletePlan }) => {
       <div className="adnewplan-separator"></div>
 
       <div className="adnewplan-right-section">
+        <div className="text">
         <div>Risk: <span className={`adnewplan-risk-dot adnewplan-risk-${risk}`}></span>{risk}</div>
         <div>Minimum Investment Amount: ${minInvestmentAmount}</div>
         <div>Number of Subscriptions: {noOfSubscription}</div>
         <div>Cap Value: ${capValue}</div>
+        </div>
+
+        <div className="btn">
         <div className="adnewplan-delete-icon" onClick={() => deletePlan && deletePlan(plan._id)}>Delete</div>
+        </div>
       </div>
     </div>
   );
