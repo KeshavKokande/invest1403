@@ -62,10 +62,8 @@ function App() {
             <Route path="/advisor_id/:advisor_id" element={<AdvClProfile />} />
             <Route path="/plan_id/:plan_id" element={<PlanView />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/" element={<LandingPage />} />
             <Route path="/planscl" element={<PlansCl/>} />
             <Route path="/viewadvi" element={<AdvClView/>} /> 
-            {/* <Route path="/queries" element={<Queries/>} /> */}
             <Route path="/plan" element={<Plans/>} />
           </Route>
         </Routes>

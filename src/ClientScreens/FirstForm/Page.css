@@ -1,15 +1,55 @@
+form{
+  display: grid;
+  grid-gap: 2vh;
+  justify-items: center;
+}
+
 .container {
-  max-width: 800px;
-  margin: 0 auto;
   padding: 20px;
+  background-color: #fbf9f9;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  /* justify-items: center; */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .form-container {
-  background-color: #f9f9f9;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: grid;
+    grid-template-columns: 48% 48%;
+    grid-gap: 2%;
+}
+
+.form-container1{
+  display: grid;
+  grid-template-columns: auto !important;
+  grid-gap: 6%;
+  height: 58vh;
+  overflow: auto;
+}
+
+.form-container2{
+  display: grid;
+  grid-template-columns: auto !important;
+  grid-gap: 6%;
+}
+
+.form-container2 input{
+  width: auto;
+}
+
+.form-container1 .question-container{
+  width: 96% !important;
+}
+
+.container .image{
+  display: grid;
+  justify-items: center;
+}
+
+.container .image img{
+  width: 70%;
 }
 
 .form-container h2 {
@@ -23,9 +63,11 @@
 }
 
 .form-container label {
-  display: block;
+  /* display: block;
   margin-bottom: 8px;
-  color: #333;
+  color: #333; */
+  position: static !important;
+  background: none !important;
 }
 
 .form-container input[type="text"],
@@ -33,8 +75,8 @@
 .form-container textarea,
 .form-container select {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
+  padding: 8px;
+  /* margin-bottom: 15px; */
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
@@ -74,6 +116,20 @@
   color: #fff;
 }
 
+.btns{
+  display: grid;
+  width: fit-content;
+  grid-template-columns: auto auto;
+  grid-gap: 1vw;
+}
+
+.prev-button, 
+.next-button{
+  width: 8vw;
+  padding: 10px;
+  border-radius: 12px;
+}
+
 .preview-container {
   margin-top: 20px;
 }
@@ -91,7 +147,30 @@
 
 .question-container{
 
-  width: 80%;
-  border-radius: 1.5rem;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  /* display: grid;
+  grid-template-columns: 48% 48%;
+  grid-gap: 2vh; */
+  width: 100%;
+  /* border-radius: 1.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
+}
+
+
+
+.submit-button {
+  display: none; /* Initially hide the submit button */
+}
+
+/* Show the submit button when terms are agreed */
+.terms-agreed .submit-button {
+  display: block;
+}
+
+/* Hide the next button on PageThree */
+.page-three .next-button {
+  display: none;
+}
+
+.form-control-capitalize{
+  text-transform: capitalize;
 }

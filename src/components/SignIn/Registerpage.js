@@ -1,6 +1,7 @@
 import  { useState } from 'react';
 import './registerpage.css';
 import { FcGoogle } from 'react-icons/fc';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +10,8 @@ const Register = () => {
     password: "",
     confirmPassword:""
   });
-
+  const navigate = useNavigate();
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
@@ -17,6 +19,7 @@ const Register = () => {
       [name]: value
     }));
   };
+
 
   const handleSubmit = () => {
     fetch('http://localhost:8000/api/v1/check-auth/signup', {
@@ -30,6 +33,7 @@ const Register = () => {
     .then(response => response.json())
     .then(data => {
       console.log(data);
+      navigate(`/clform?name=${formData.name}&email=${formData.email}`);
     })
     .catch(error => {
       console.error('Error:', error);

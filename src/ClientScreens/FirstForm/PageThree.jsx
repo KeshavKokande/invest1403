@@ -1,39 +1,43 @@
 import React, { useState } from 'react';
+import termsAndConditions from "./../../assets/images/terms_conditions.svg";
 
 const PageThree = () => {
-  const [photo, setPhoto] = useState(null);
+  const [agreed, setAgreed] = useState(false);
 
-  const handlePhotoUpload = (event) => {
-    const selectedPhoto = event.target.files[0];
-    setPhoto(selectedPhoto);
+  const handleAgreementChange = () => {
+    setAgreed(!agreed);
   };
 
   return (
     <div className="container">
-      <div className="form-container">
+      <div className="image">
+        <img src= {termsAndConditions} alt="image" />
+      </div>
+      <div className="form-container form-container2">
+        {/* <h2>Page 4</h2> */}
         
-        
-          <div className="form-group className='question-container'">
-            <label htmlFor="photoId">Upload Photo ID:</label>
-            <input
-              type="file"
-              id="photoId"
-              name="photoId"
-              accept="image/*"
-              onChange={handlePhotoUpload}
-              className="form-control-file"
-            />
+          <div className="terms">
+            <h3>Terms and Conditions</h3>
+            <p>
+              By proceeding, you agree to abide by the terms and conditions
+              outlined in our agreement.
+            </p>
+            <p>
+              This is where you include all your terms and conditions text.
+              Make sure it's clear and easy to understand.
+            </p>
           </div>
-          {photo && (
-            <div className="preview-container">
-              <p>Preview:</p>
-              <img
-                src={URL.createObjectURL(photo)}
-                alt="Uploaded Photo ID"
-                className="preview-image"
+          <div className="checkbox-container">
+              <input
+                type="checkbox"
+                id="agreement"
+                name="agreement"
+                checked={agreed}
+                onChange={handleAgreementChange}
+                className="form-control-checkbox"
               />
-            </div>
-          )}
+            <label htmlFor="agreement">I agree to the terms and conditions</label>
+          </div>
         
       </div>
     </div>

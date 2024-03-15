@@ -4,8 +4,6 @@ import { LIGHT_THEME } from "../../constants/themeConstants";
 import LogoBlue from "../../assets/images/logo_blue.svg";
 import LogoWhite from "../../assets/images/logo_white.svg";
 import {
-  MdOutlineAttachMoney,
-  MdOutlineBarChart,
   MdOutlineClose,
   MdOutlineCurrencyExchange,
   MdOutlineGridView,
@@ -17,11 +15,12 @@ import {
 } from "react-icons/md";
 import { Link } from "react-router-dom";
 import "./Sidebar.scss";
+import { useLocation } from "react-router-dom";
 import { SidebarContext } from "../../context/SidebarContext";
-import Clientlist from '../dashboard/client/clientlist';
 
 
 const ClSidebar = () => {
+  const location = useLocation();
   const { theme } = useContext(ThemeContext);
   const { isSidebarOpen, closeSidebar } = useContext(SidebarContext);
   const navbarRef = useRef(null);
@@ -63,31 +62,15 @@ const ClSidebar = () => {
       <div className="sidebar-body">
         <div className="sidebar-menu">
           <ul className="menu-list">
-            <li className="menu-item">
-              <Link to="/cldash" className="menu-link active">
+            <li className={`menu-item ${location.pathname === "/cldash" ? "active" : ""}`}>
+              <Link to="/cldash" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineGridView size={18} />
                 </span>
                 <span className="menu-link-text">Dashboard</span>
               </Link>
             </li>
-            {/* <li className="menu-item">
-              <Link to="/" className="menu-link">
-                <span className="menu-link-icon">
-                  <MdOutlineBarChart size={20} />
-                </span>
-                <span className="menu-link-text">Statistics</span>
-              </Link>
-            </li>
-            <li className="menu-item">
-              <Link to="/" className="menu-link">
-                <span className="menu-link-icon">
-                  <MdOutlineAttachMoney size={20} />
-                </span>
-                <span className="menu-link-text">Payment</span>
-              </Link>
-            </li> */}
-            <li className="menu-item">
+            <li className={`menu-item ${location.pathname === "/profile" ? "active" : ""}`}>
               <Link to="/profile" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineCurrencyExchange size={18} />
@@ -95,7 +78,7 @@ const ClSidebar = () => {
                 <span className="menu-link-text">Profile</span>
               </Link>
             </li>
-            <li className="menu-item">
+            <li className={`menu-item ${location.pathname === "/planscl" ? "active" : ""}`}>
               <Link to="/planscl" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineShoppingBag size={20} />
@@ -103,7 +86,7 @@ const ClSidebar = () => {
                 <span className="menu-link-text">Plans</span>
               </Link>
             </li>
-            <li className="menu-item">
+            <li className={`menu-item ${location.pathname === "/viewadvi" ? "active" : ""}`}>
               <Link to="/viewadvi" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlinePeople size={20} />
@@ -111,14 +94,6 @@ const ClSidebar = () => {
                 <span className="menu-link-text">Advisers</span>
               </Link>
             </li>
-            {/* <li className="menu-item">
-              <Link to="/clientlist" className="menu-link">
-                <span className="menu-link-icon">
-                  <MdOutlinePeople size={20} />
-                </span>
-                <span className="menu-link-text">Client List</span>
-              </Link>
-            </li> */}
             <li className="menu-item">
               <Link to="/" className="menu-link">
                 <span className="menu-link-icon">

@@ -1,13 +1,17 @@
 import React from 'react';
+import Questionnare from "./../../assets/images/questionnare.svg";
 
 const questions = require('./dummyData.json');
 
 const PageTwo = () => {
   return (
     <div className="container">
-      <div className="form-container">
+      <div className="image">
+        <img src= {Questionnare} alt="image" />
+      </div>
+      <div className="form-container form-container1">
         
-        
+
           {questions.map((question, index) => (
             <div key={index} className="question-container">
               <label>{question.ques}</label>

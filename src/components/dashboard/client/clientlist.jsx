@@ -6,8 +6,7 @@ const TABLE_HEADS = [
   "Client ID",
   "Client Name",
   "Client Email",
-  "Plan IDs",
-  "Edit",
+  "Plan IDs"
 ];
 
 
@@ -65,11 +64,6 @@ const Clientlist = () => {
                     <div key={planId}>{planId}</div>
                   ))}
                 </td>
-                  
-                  {/* <td>${purchase.amount.toFixed(2)}</td> Corrected variable name */}
-                  <td className="dt-cell-action">
-                    <AreaTableAction />
-                  </td>
                 </tr>
             ))}
           </tbody>

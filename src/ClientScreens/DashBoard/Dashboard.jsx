@@ -1,82 +1,54 @@
-import React, { useEffect, useState } from "react";
-import PortfolioSummary from "./PortfolioSummary";
-import PortfolioPieCharts from "./PortfolioPieCharts";
-import folioData from "./folioData.json";
-import PortfolioTableAndGraph from "./PortfolioTableAndGraph";
-import PortfolioTable from "./Table";
+import React, { useState, useEffect } from 'react';
+import InvestmentSummary from './Summary';
+// import data from "./data.json"
 
-const API_KEY = "9dPUZYcQb2ivJ5Fz9Ep3PIlFiIVGGl5s"; // Replace with your Financial Modeling Prep API key
 
-const Dashboard = () => {
-  const [portfolioData, setPortfolioData] = useState({
-    totalInvestment: 0,
-    totalReturns: 0,
-    portfolioValue:0,
-    plansData: []
-  });
+function DashboardCl() {
+    const [transactions, setTransactions] = useState([]);
+    const [returns, setReturns] = useState([])
 
-  useEffect(() => {
-    const fetchPortfolioData = async () => {
-      try {
-        let totalInvestment = 0;
-        let totalReturns = 0;
-        const plansData = [];
-
-        for (const plan of folioData.folio.plans) {
-          let planInvestment = 0;
-          let planReturns = 0;
-
-          for (const stock of plan.stocks) {
-            const response = await fetch(
-              `https://financialmodelingprep.com/api/v3/historical-price-full/${stock.symbol}?apikey=${API_KEY}`
-            );
-            const data = await response.json();
-            const latestPrice = data.historical[0].close;
-
-            planInvestment += stock.buying_price * stock.qty;
-            planReturns += latestPrice * stock.qty - stock.buying_price * stock.qty;
+    useEffect(() => {
+      const fetchTransactions = async () => {
+        try {
+   
+          const response = await fetch('http://localhost:8000/api/v1/Client/get-subscribed-plans', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+          })
+          
+          const ponse = await fetch('http://localhost:8000/api/v1/Client/get-returns-of-subscribed-plans', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+          })
+   
+          if (!response.ok || !ponse.ok) {
+            throw new Error('Failed to fetch user data');
           }
-
-          totalInvestment += plan.amount;
-          totalReturns += planReturns;
-
-
-          plansData.push({
-            planName: plan.plan_name,
-            amount: plan.amount,
-            returns: planReturns
-          });
-        }
-
-        setPortfolioData({
-          totalInvestment,
-          totalReturns,
-          plansData
-        });
+          const data = await response.json();
+          const redat = await ponse.json();
+          setTransactions(data.transactions);
+          setReturns(redat.profits);
+          console.log(data)
+          console.log(redat)
       } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+          console.error('Error fetching user data:', error.message);
+        }
+      };
+   
+      fetchTransactions();
+    }, []);
+return (
+        <div className="App">
+            <center><h1> Portfolio Summary</h1></center>
+            <InvestmentSummary transactions={transactions} returns={returns}/>
+        </div>
+    );
+}
 
-    fetchPortfolioData();
-  }, []);
-
-  return (
-    <div>
-      <PortfolioSummary
-        totalInvestment={portfolioData.totalInvestment}
-        portfolioValue={portfolioData.portfolioValue}
-        totalReturns={portfolioData.totalReturns}
-        todayChange={portfolioData.todayChange}
-      />
-      <hr/>
-      <PortfolioPieCharts plansData={portfolioData.plansData} />
-      <hr/>
-      <PortfolioTableAndGraph/>
-      <hr/>
-      <PortfolioTable/>
-    </div>
-  );
-};
-
-export default Dashboard;
+export default DashboardCl;
